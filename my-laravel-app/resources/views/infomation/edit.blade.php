@@ -1,6 +1,5 @@
-<div class = "title">
-  <h1>個人のデータ</h1>
-</div>
+@extends('infomation/layout')
+@section('title')
 <div class = "edit_contents">
   <form action = "/infomation/{{$infomation->id}}" method = "POST">
   @csrf 
@@ -21,3 +20,4 @@
     <a href="/infomation">戻る</a>
   </form>
 </div>
+@section('title')

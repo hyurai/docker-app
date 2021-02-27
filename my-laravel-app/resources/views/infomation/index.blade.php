@@ -1,6 +1,5 @@
-<head>
-  <title>Todoアプリケーション</title>
-</head>
+@extends('infomation/layout')
+@section('title')
 <div class = "main-contents">
   <table>
     <thead>
@@ -30,3 +29,4 @@
   </table>
   <a href="/infomation/create">新規登録</a>
 </div>
+@endsection
