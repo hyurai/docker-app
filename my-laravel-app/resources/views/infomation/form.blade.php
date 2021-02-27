@@ -21,5 +21,6 @@
       <input type="text" name = "weight" @!empty value = "{{$infomation->weight}}">
     </div>
     <button type = "submit">送信</button>
+    <a href="/infomation">戻る</a>
     </form>
 </div>
