@@ -13,13 +13,13 @@ class TweetsTableSeeder extends Seeder
         DB::table('tweets')->truncate();
         //
         $tweets = [
-            [ 'infomations_id' => 1,
+            [ 'infomation_id' => 1,            
               'text' => 'おはよう'
             ],
-            [ 'infomations_id' => 2,
+            [ 'infomation_id' => 2,
               'text' => 'こんばんわ'
              ],
-            [ 'infomations_id' => 3,
+            [ 'infomation_id' => 3,
               'text' => 'こんにちわ'
             ], 
         ];
