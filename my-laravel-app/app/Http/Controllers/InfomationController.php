@@ -28,25 +28,27 @@ class InfomationController extends Controller{
 
         return redirect('/infomation');
     }
-    public function destroy(Request $request){
+    public function destroy(infomation $infomation,Request $request){
 
-        $infomation = new Infomation();
         $infomation->id = $request->id;
         $infomation->delete();
         return redirect('/infomation');
     }
-    public function create(){
-        $infomation = new Infomation();
+    public function create(Infomation $infomation){
         return view('infomation/create',compact('infomation'));
     }
     public function store(Request $request){
-        $infomation = new Infomation();
-        $infomation->name = $request->name;
-        $infomation->height = $request->height;
-        $infomation->weight = $request->weight;
-        $infomation->save();
+        DB::transaction(function() use ($request){
+          $infomation = new Infomation();
+          $infomation->name = $request->name;
+          $infomation->height = $request->height;
+          $infomation->weight = $request->weight;
+          $infomation->save();
+          return redirect("/infomation");   
+          
+        });
+       
 
-        return redirect("/infomation");
     }
 
 } 
