@@ -39,5 +39,8 @@
   @endcomponent
   @include('components.subviewwarning',['subviewwarning_title' => 'これはサブビューのタイトル',
   'subviewwarning_details' => 'これはサブビューの詳細'])  
+  <p class = "viewcomposer_demo">ここから下はビューコンポーサーを利用しています</p>
+  <p>Controller Value<br>'message' = {{$message}}</p>
+  <p>ViewComposer value<br>'view_messsage' = {{$view_message}}</p>
 </div>
 @endsection

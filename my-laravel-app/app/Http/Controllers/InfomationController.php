@@ -13,8 +13,9 @@ class InfomationController extends Controller{
     public function index(){
         //DBクラスを使用
         $infomations =  DB::select('select * from infomations');
-        return view('infomation/index',compact('infomations'));
+        return view('infomation/index',compact('infomations'),['message'=>'Hello!']);
     }
+    
     public function edit($id){
         $infomation = Infomation::findOrFail($id);
 
