@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
+
 
 class Infomation extends Model{
     public function tweets(){
@@ -14,4 +14,5 @@ class Infomation extends Model{
         return $query->where('height','>',$standardValue);
         
     }
+
 }

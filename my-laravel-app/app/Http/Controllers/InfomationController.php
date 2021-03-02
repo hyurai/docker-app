@@ -32,9 +32,6 @@ class InfomationController extends Controller{
     public function destroy(infomation $infomation,Request $request){
         $infomation->id = $request->id;
         DB::transaction(function () use ($infomation){
-            $infomation->tweets()->each(function ($tweet){
-                $tweet->delete();
-            });
             $infomation->delete();
         });
         return redirect('/infomation');
@@ -48,9 +45,8 @@ class InfomationController extends Controller{
         $infomation->height = $request->height;
         $infomation->weight = $request->weight;
         $infomation->save();
-        return redirect("/infomation");   
-       
-
+        return redirect("/infomation");
+        
     }
 
 } 
