@@ -28,5 +28,7 @@
     @endforeach
   </table>
   <a href="/infomation/create">新規登録</a>
+  @component('components.index')
+  @endcomponent  
 </div>
 @endsection
