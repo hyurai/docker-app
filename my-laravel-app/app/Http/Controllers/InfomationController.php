@@ -15,11 +15,11 @@ class InfomationController extends Controller{
         $infomations =  DB::select('select * from infomations');
         return view('infomation/index',compact('infomations'),['message'=>'Hello!']);
     }
-    
-    public function edit($id){
-        $infomation = Infomation::findOrFail($id);
-
-        return view('infomation/edit',compact('infomation'));
+    public function edit(Request $request){
+        //クエリビルダ
+        $id = $request->id;
+        $infomation = DB::table('infomations')->where('id',$id)->first();
+        return view('infomation/edit',compact('infomation' ,'id'));
     }
     public function update(Request $request,$id){
         $infomation = Infomation::findOrFail($id);
