@@ -8,7 +8,6 @@ use App\Http\Requests\InfomationRequest;
 use App\Infomation;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
-
 class InfomationController extends Controller{
     public function index(){
         //DBクラスを使用
@@ -17,8 +16,11 @@ class InfomationController extends Controller{
     }
     public function edit(Request $request){
         //クエリビルダ
+        dd($request);
         $id = $request->id;
-        $infomation = DB::table('infomations')->where('id',$id)->first();
+        
+        $infomation = Infomation::where('id',$id)->first();
+    
         return view('infomation/edit',compact('infomation' ,'id'));
     }
     public function update(Request $request,$id){
