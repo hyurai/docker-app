@@ -11,14 +11,18 @@
     <div class = "nameTextField">
       <label for="name">名前</label>
       <input type="text" name = "name"  @!empty value = "{{$infomation->name}}">
+      @if($errors->has('name')) <span class="text-danger">{{ $errors->first('name') }}</span> @endif
     </div>
+    
     <div class = "heightTextFiled">
       <label for="height">身長</label>
       <input type="text" name = "height" @!empty value = "{{$infomation->height}}">
+      @if($errors->has('height')) <span class="text-danger">{{ $errors->first('height') }}</span> @endif
     </div>
     <div class = "weightTextFiled">
       <label for="weight">体重</label>
       <input type="text" name = "weight" @!empty value = "{{$infomation->weight}}">
+      @if($errors->has('weight')) <span class="text-danger">{{ $errors->first('weight') }}</span> @endif
     </div>
     <button type = "submit">送信</button>
     <a href="/infomation">戻る</a>

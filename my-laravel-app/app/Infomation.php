@@ -22,7 +22,5 @@ class Infomation extends Model{
         return $query->where('height','>=',$standardValue);
         
     }
-
     
-
 }

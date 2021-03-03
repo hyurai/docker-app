@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InfomationRequest;
 use App\Infomation;
+use Dotenv\Validator;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Collection; 
 class InfomationController extends Controller{
     public function index(){
         //DBクラスを使用
@@ -47,9 +48,11 @@ class InfomationController extends Controller{
         $infomation->name = $request->name;
         $infomation->height = $request->height;
         $infomation->weight = $request->weight;
-        $infomation->save();
-        return redirect("/infomation");
         
+        $infomation->save();
     }
-
+    public function confirm(\App\Http\Requests\InfomationRequest $request) {
+        $data = $request->all();
+         return view('create.confirm')->with($data);
+      }
 } 
