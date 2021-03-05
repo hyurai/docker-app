@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('infomation', 'InfomationController'); 
+Route::resource('tweet','TweetControlller'); 
