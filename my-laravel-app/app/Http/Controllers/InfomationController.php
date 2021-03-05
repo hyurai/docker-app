@@ -26,10 +26,15 @@ class InfomationController extends Controller{
 
         return redirect('/infomation');
     }
-    public function destroy($id){
-        $infomation = Infomation::findOrFail($id);
-        $infomation->delete();
-
+    public function destroy(infomation $infomation,Request $request){
+        $infomation->id = $request->id;
+        DB::transaction(function () use ($infomation){
+            $infomation->tweets()->each(function ($tweet){
+                $tweet->delete();
+            });
+            $infomation->delete();
+        });
+    
         return redirect('/infomation');
     }
     public function create(){
