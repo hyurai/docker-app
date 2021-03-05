@@ -10,7 +10,7 @@ use App\Infomation;
 class InfomationController extends Controller{
     public function index(){
         $infomations = infomation::all();
-        return view('infomation/index',compact('infomations'));
+        return view('infomation/index',compact('infomations'),['message'=>'Hello!']);
     }
     public function edit($id){
         $infomation = Infomation::findOrFail($id);
