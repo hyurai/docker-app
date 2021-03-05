@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InfomationRequest;
 use App\Infomation;
-use Dotenv\Validator;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\Collection; 
+use Illuminate\Database\Eloquent\Collection;
+use Validator;
+
 class InfomationController extends Controller{
     public function index(){
         //DBクラスを使用
@@ -44,13 +45,27 @@ class InfomationController extends Controller{
         return view('infomation/create',compact('infomation'));
     }
     public function store(Request $request){
-        $infomation = new Infomation();
-        $infomation->name = $request->name;
-        $infomation->height = $request->height;
-        $infomation->weight = $request->weight;
-        
-        $infomation->save();
+        $rules = [
+            'name' => 'required',
+            'height' => 'required',
+            'weight' => 'required',
+        ];
+        $messages = [
+            'name.required' => '名前を入力してください',
+            'height.required' => '身長を入力してください',
+            'weight.required' => '体重を入力してください',
+        ];
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if($validator->fails()){
+            return redirect('infomation/create')
+            ->withErrors('$vakidator')
+            ->withInput();
+        }
+        $validator->save();
+        return redirect('/infomation');
+    
     }
+
     public function confirm(\App\Http\Requests\InfomationRequest $request) {
         $data = $request->all();
          return view('create.confirm')->with($data);

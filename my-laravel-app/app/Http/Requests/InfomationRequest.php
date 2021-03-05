@@ -13,7 +13,7 @@ class InfomationRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -21,20 +21,19 @@ class InfomationRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(){
+    public function rules()
+    {
         return [
-            'height' => 'required',
-            'weihgt' => 'required',
-            'name' => 'required'
+            'name' => 'required',
+            'height'=> 'required',
+            'weight' => 'required',
         ];
-        
     }
-    public function message(){
-        return[
-            'height.required' => '身長が書かれていません',
-            'weight.required' => '体重は書かれていません',
-            'name.required' => '名前が書かれていません',
-
+    public function messages(){
+        return [
+            'name.required' => '名前を入力してください',
+            'height.required' => '身長を入力してください',
+            'weight.required' => '体重を入力してください',
         ];
     }
 }
