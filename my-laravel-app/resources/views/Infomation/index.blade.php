@@ -38,4 +38,6 @@
     @slot('warning_details')
       近日bookテーブルの情報が追加します
     @endslot
-  @endcomponent  
+  @endcomponent
+  @include('components.subviewwarning',['subviewwarning_title' => 'これはサブビューのタイトル',
+  'subviewwarning_details' => 'これはサブビューの詳細'])    
