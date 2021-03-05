@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InfomationRequest;
 use App\Infomation;
+use Illuminate\Support\Facades\DB;
+
 
 class InfomationController extends Controller{
     public function index(){
-        $infomations = infomation::all();
+        $infomations =  DB::select('select * from infomations');
         return view('infomation/index',compact('infomations'));
     }
     public function edit($id){
