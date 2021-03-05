@@ -14,8 +14,10 @@ class InfomationController extends Controller{
         $infomations =  DB::select('select * from infomations');
         return view('infomation/index',compact('infomations'));
     }
-    public function edit($id){
-        $infomation = Infomation::findOrFail($id);
+    public function edit(Request $request){
+        dd($request);
+        $id = $request->id;
+        $infomation = Infomation::where('id',$id)->first();
 
         return view('infomation/edit',compact('infomation'));
     }
