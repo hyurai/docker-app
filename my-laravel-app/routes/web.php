@@ -19,4 +19,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('infomation', 'InfomationController')->middleware(App\Http\Middleware\Sample::class); 
-Route::resource('tweet','TweetControlller');
