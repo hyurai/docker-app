@@ -30,3 +30,12 @@
   </table>
   <a href="/infomation/create">新規登録</a>
 </div> 
+@component('components.warning')
+    @slot('warning_title')
+      今日のお知らせ
+    @endslot
+
+    @slot('warning_details')
+      近日bookテーブルの情報が追加します
+    @endslot
+  @endcomponent  
