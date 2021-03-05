@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use GuzzleHttp\Middleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('infomation', 'InfomationController');  
+Route::resource('infomation', 'InfomationController')->middleware(App\Http\Middleware\Sample::class); 
