@@ -1,6 +1,5 @@
 @extends('infomation/layout')
 @section('title')
-<p>{{$msg}}</p>
 <div class = "main-contents">
   <table>
     <thead>

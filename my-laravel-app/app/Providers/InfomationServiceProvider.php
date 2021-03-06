@@ -12,11 +12,11 @@ class InfomationServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
+    public function register(){
+        $this->app->bind('Infomation','App\Services\Infomation');
         //
     }
-
+    
     /**
      * Bootstrap services.
      *
