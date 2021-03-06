@@ -14,11 +14,11 @@
     @foreach($infomations as $infomation)
     <tbody>
       <tr>
-        <td><a href="/infomation/{{$infomation->id}}/edit">{{$infomation->name}}</a></td>
-        <td>{{$infomation->height}}</td>
-        <td>{{$infomation->weight}}</td>
+        <td><a href="/infomation/{{optional($infomation)->id}}/edit">{{optional($infomation)->name}}</a></td>
+        <td>{{optional($infomation)->height}}</td>
+        <td>{{optional($infomation)->weight}}</td>
         <td>
-          <form action="/infomation/{{$infomation->id}}" method = "post">
+          <form action="/infomation/{{optional($infomation)->id}}" method = "post">
             @csrf
             <input type="hidden" name="_method" value="DELETE">
             <button type = "submit">削除</button>

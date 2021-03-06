@@ -2,22 +2,23 @@
   <h1>個人のデータ</h1>
 </div>
 <div class = "edit_contents">
-  <form action = "/infomation/{{$infomation->id}}" method = "POST">
-  @csrf 
-    <input type="hidden" name="_method" value="PUT">
+  <form  action = "infomation/{{optional($infomation)->id}}"method = "POST">
+    @method('PUT')
+    {{ csrf_field() }}
     <div class = "height_edit">
       <label for="height">身長</label>
-      <input type="text" name = "height" value = "{{$infomation->height}}">
+      <input type="text" name = "height" value = "{{optional($infomation)->height}}">
     </div>
     <div class = "weight_edit">
       <label for="price">体重</label>
-      <input type="text" name = "weight" value = "{{$infomation->weight}}">
+      <input type="text" name = "weight" value = "{{optional($infomation)->weight}}">
     </div>
     <div>
       <label for="name_edit">名前</label>
-      <input type="text" name = "name" value = "{{$infomation->name}}">
+      <input type="text" name = "name" value = "{{optional($infomation)->name}}">
     </div>
     <button type = "submit">変更</button>
     <a href="/infomation">戻る</a>
   </form>
 </div>
+

@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\InfomationRequest;
 use App\Infomation;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+
+
 
 
 class InfomationController extends Controller{
@@ -15,11 +18,10 @@ class InfomationController extends Controller{
         return view('infomation/index',compact('infomations'));
     }
     public function edit(Request $request){
-        dd($request);
         $id = $request->id;
-        $infomation = Infomation::where('id',$id)->first();
+        $infomation = DB::table('infomations')->where('id',$id)->first();
 
-        return view('infomation/edit',compact('infomation'));
+        return view('infomation/edit',['infomation' => $infomation]);
     }
     public function update(Request $request,$id){
         $infomation = Infomation::findOrFail($id);
@@ -28,7 +30,7 @@ class InfomationController extends Controller{
         $infomation->weight = $request->weight;
         $infomation->save();
 
-        return redirect('/infomation');
+        return redirect("/infomation");
     }
     public function destroy($id){
         $infomation = Infomation::findOrFail($id);
@@ -47,7 +49,7 @@ class InfomationController extends Controller{
         $infomation->weight = $request->weight;
         $infomation->save();
 
-        return redirect("/infomation");
+        return redirect("infomation/index");
     }
 
 } 
