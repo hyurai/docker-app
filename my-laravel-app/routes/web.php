@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Services\Hellow;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,3 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('infomation', 'InfomationController');  
+Route::get('/hellow',function(Hellow $hellow){
+    return $hellow->getMessage();
+});
