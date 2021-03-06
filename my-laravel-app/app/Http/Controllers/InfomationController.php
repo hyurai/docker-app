@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InfomationRequest;
+use Illuminate\Database\Eloquent\Builder;
 use App\Infomation;
+
+
 
 class InfomationController extends Controller{
     public function index(){
-        $infomations = infomation::all();
+        $infomations = Infomation::tallHuman(165)->get(); 
         return view('infomation/index',compact('infomations'));
     }
     public function edit($id){
