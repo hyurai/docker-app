@@ -29,8 +29,7 @@ class InfomationController extends Controller{
         $infomation->height = $request->height;
         $infomation->weight = $request->weight;
         $infomation->save();
-
-        return redirect("/infomation");
+        return redirect("infomation/index");
     }
     public function destroy($id){
         $infomation = Infomation::findOrFail($id);
