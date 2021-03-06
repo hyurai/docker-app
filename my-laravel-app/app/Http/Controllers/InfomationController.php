@@ -44,26 +44,11 @@ class InfomationController extends Controller{
     public function create(Infomation $infomation){
         return view('infomation/create',compact('infomation'));
     }
-    public function store(Request $request){
-        $rules = [
-            'name' => 'required',
-            'height' => 'required',
-            'weight' => 'required',
-        ];
-        $messages = [
-            'name.required' => '名前を入力してください',
-            'height.required' => '身長を入力してください',
-            'weight.required' => '体重を入力してください',
-        ];
-        $validator = Validator::make($request->all(),$rules,$messages);
-        if($validator->fails()){
-            return redirect('infomation/create')
-            ->withErrors('$vakidator')
-            ->withInput();
-        }
-        $validator->save();
-        return redirect('/infomation');
-    
+    public function store(Request $request,Infomation $infomation){
+        $form = $request->all();
+        unset($form['_token']);
+        $infomation->fill($form)->save();
+        return redirect('infomation/index',['msg' => '正しく入力されました']);
     }
 
     public function confirm(\App\Http\Requests\InfomationRequest $request) {

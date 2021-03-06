@@ -1,4 +1,13 @@
 @extends('infomation/layout')
+@if(count($errors) > 0)
+  <div>
+    <ul>
+      @foreach ($errors -> all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
 <div class = "form">
   @if($target == 'store')
     <form action = '/infomation' method = "post"> 
@@ -9,26 +18,14 @@
   @endif
     @csrf
     <div class = "nameTextField">
-      @error('name')
-        <h2>ERROR</h2>
-        <h2>{{$message}}</h2>
-      @enderror
       <label for="name">名前</label>
       <input type="text" name = "name"  @!empty value = "{{$infomation->name}}">
     </div>
     <div class = "heightTextFiled">
-      @error('height')
-        <h2>ERROR</h2>
-        <h2>{{$message}}</h2>
-      @enderror
       <label for="height">身長</label>
       <input type="text" name = "height" @!empty value = "{{$infomation->height}}">
     </div>
     <div class = "weightTextFiled">
-      @error('height')
-        <h2>ERROR</h2>
-        <h2>{{$message}}</h2>
-      @enderror
       <label for="weight">体重</label>
       <input type="text" name = "weight" @!empty value = "{{$infomation->weight}}">
     </div>
