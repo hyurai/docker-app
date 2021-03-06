@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('infomation', 'InfomationController');  
+Route::get('getTask', 'Api\TaskController@getTask');
