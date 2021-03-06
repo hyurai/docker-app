@@ -22,6 +22,7 @@ class InfomationController extends Controller{
         $infomation->name = $request->name;
         $infomation->height = $request->height;
         $infomation->weight = $request->weight;
+        dd($infomation);
         $infomation->save();
 
         return redirect('/infomation');
