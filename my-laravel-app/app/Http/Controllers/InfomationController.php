@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InfomationRequest;
 use App\Infomation;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class InfomationController extends Controller{
     public function index(){
