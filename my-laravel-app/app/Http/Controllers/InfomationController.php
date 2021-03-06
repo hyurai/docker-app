@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InfomationRequest;
 use App\Infomation;
+use DB;
 
 class InfomationController extends Controller{
     public function index(){
@@ -26,15 +27,9 @@ class InfomationController extends Controller{
 
         return redirect('/infomation');
     }
-    public function destroy(infomation $infomation,Request $request){
-        $infomation->id = $request->id;
-        DB::transaction(function () use ($infomation){
-            $infomation->tweets()->each(function ($tweet){
-                $tweet->delete();
-            });
-            $infomation->delete();
-        });
-    
+    public function destroy(infomation $infomation,$id){
+        $infoamtion = Infomation::findOrFail($id);
+        $infomation->delete();
         return redirect('/infomation');
     }
     public function create(){
@@ -42,13 +37,20 @@ class InfomationController extends Controller{
         return view('infomation/create',compact('infomation'));
     }
     public function store(Request $request){
-        $infomation = new Infomation();
-        $infomation->name = $request->name;
-        $infomation->height = $request->height;
-        $infomation->weight = $request->weight;
-        $infomation->save();
-
-        return redirect("/infomation");
+       DB::beginTransaction();
+         try{
+            $infomation = new Infomation();
+            $infomation->name = $request->name;
+            $infomation->height = $request->height;
+            $infomation->weight = $request->weight;
+            $infomation->save();
+            dd($infomation);
+            return redirect("/infomation");
+            DB::commit();
+         }catch(\PDOException $e){
+            DB::rollBack();
+            return redirect('infomation/create');
+         }        
     }
 
 } 
