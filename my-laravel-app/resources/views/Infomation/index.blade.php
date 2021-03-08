@@ -11,6 +11,7 @@
         <th>削除</th>
       </tr>
     </thead>
+    <p>{{$msg}}</p>
     @foreach($infomations as $infomation)
     <tbody>
       <tr>
