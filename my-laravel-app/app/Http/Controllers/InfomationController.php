@@ -36,17 +36,15 @@ class InfomationController extends Controller{
         $infomation = new Infomation();
         return view('infomation/create',compact('infomation'));
     }
-    public function store(Request $request){
+    public function store(Request $request ,Infomation $infomation){
+       $infomation->name = $request->name;
+       $infomation->height = $request->height;
+       $infomation->weight = $request->weight;
        DB::beginTransaction();
          try{
-            $infomation = new Infomation();
-            $infomation->name = $request->name;
-            $infomation->height = $request->height;
-            $infomation->weight = $request->weight;
-            $infomation->save();
-            dd($infomation);
-            return redirect("/infomation");
             DB::commit();
+            $infomation->save();
+            return redirect("/infomation");
          }catch(\PDOException $e){
             DB::rollBack();
             return redirect('infomation/create');
