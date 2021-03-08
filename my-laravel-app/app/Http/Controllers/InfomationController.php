@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InfomationRequest;
 use App\Infomation;
+use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 use Validator;
@@ -45,14 +46,25 @@ class InfomationController extends Controller{
         return view('infomation/create',compact('infomation'));
     }
     public function store(Request $request,Infomation $infomation){
-        $form = $request->all();
-        unset($form['_token']);
-        $infomation->fill($form)->save();
-        return redirect('infomation/index',['msg' => '正しく入力されました']);
+        $infomation->name = $request->name;
+        $infomation->height = $request->height;
+        $infomation->weight = $request->weight;
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'height' => 'required',
+            'weight' => 'required',
+        ]);
+
+        if($validator->fails()){
+             return redirect('/infomation/create')
+            ->withErrors($validator)
+            ->withInput();
+        }
+
+        $infomation->save();
+        return redirect('/infomation',['msg' => '正しく入力されました']);
+
     }
 
-    public function confirm(\App\Http\Requests\InfomationRequest $request) {
-        $data = $request->all();
-         return view('create.confirm')->with($data);
-      }
+    
 } 
