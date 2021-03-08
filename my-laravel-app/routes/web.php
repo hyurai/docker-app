@@ -1,6 +1,9 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Events\Validated;
+use App\Services\Infomation;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::resource('infomation', 'InfomationController')->middleware(App\Http\Middleware\Sample::class); 
+Route::get('/demoProvider',function (Infomation $infomation){
+    return $infomation->getMessage();
 });
