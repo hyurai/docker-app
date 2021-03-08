@@ -62,7 +62,7 @@ class InfomationController extends Controller{
         }
 
         $infomation->save();
-        return redirect('/infomation',['msg' => '正しく入力されました']);
+        return redirect('/infomation');
 
     }
 
