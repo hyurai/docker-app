@@ -42,20 +42,9 @@ class InfomationController extends Controller{
        $infomation->weight = $request->weight;
        DB::beginTransaction();
          try{
-<<<<<<< Updated upstream
             DB::commit();
             $infomation->save();
             return redirect("/infomation");
-=======
-            $infomation = new Infomation();
-            $infomation->name = $request->name;
-            $infomation->height = $request->height;
-            $infomation->weight = $request->weight;
-            dd($infomation);
-            $infomation->save();
-             return redirect("/infomation");
-            DB::commit();
->>>>>>> Stashed changes
          }catch(\PDOException $e){
             DB::rollBack();
             return redirect('infomation/create');
