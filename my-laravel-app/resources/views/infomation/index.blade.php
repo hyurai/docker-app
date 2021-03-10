@@ -1,6 +1,7 @@
 <head>
   <title>Todoアプリケーション</title>
 </head>
+//課題番号51
 <div class = "main-contents">
   <table>
     <thead>
@@ -12,6 +13,7 @@
       </tr>
     </thead>
     @foreach($infomations as $infomation)
+    //課題番号54
     <tbody>
       <tr>
         <td><a href="/infomation/{{$infomation->id}}/edit">{{$infomation->name}}</a></td>

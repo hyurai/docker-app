@@ -34,3 +34,4 @@ class CreateInfomationsTable extends Migration
         Schema::dropIfExists('infomations');
     }
 }
+//課題番号31

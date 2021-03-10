@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('infomation', 'InfomationController');
+//課題番号33

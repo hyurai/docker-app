@@ -1,7 +1,9 @@
 <div class = "title">
   <h1>個人のデータ</h1>
 </div>
+//課題番号53
 <div class = "edit_contents">
+//課題番号57
   <form action = "/infomation/{{$infomation->id}}" method = "POST">
   @csrf 
     <input type="hidden" name="_method" value="PUT">
